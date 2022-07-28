@@ -3,6 +3,8 @@ package com.helpdesk.HelpDesk.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +26,7 @@ public class TecnicoService {
 	
 	public Tecnico findById(Integer id) {
 		Optional<Tecnico> tecnico = tecnicoRepository.findById(id);
-		return tecnico.orElseThrow(() -> new ObjectNotFounExcepetion("Técnico de id " + id + " não econtrado"));
+		return tecnico.orElseThrow(() -> new ObjectNotFounExcepetion("Técnico de id " + id + " não econtrado!"));
 	}
 
 	public List<Tecnico> findAll() {
@@ -35,6 +37,22 @@ public class TecnicoService {
 		tecnicoDTO.setId(null);
 		validarCPFeEmail(tecnicoDTO);
 		return tecnicoRepository.save(new Tecnico(tecnicoDTO));
+	}
+
+	public Tecnico update(Integer id, @Valid TecnicoDTO tecnicoDTO) {
+		tecnicoDTO.setId(id);
+		Tecnico tecnico = findById(id);
+		validarCPFeEmail(tecnicoDTO);
+		tecnico = new Tecnico(tecnicoDTO);
+		return tecnicoRepository.save(tecnico);
+	}
+	
+	public void delete(Integer id) {
+		Tecnico tecnico = findById(id);
+		if (tecnico.getChamados().size() > 0) {
+			throw new DataIntegrityValidationException("Este técnico possui Orderns de Serviços e não pode ser deletado!");
+		}
+		tecnicoRepository.deleteById(id);
 	}
 
 	private void validarCPFeEmail(TecnicoDTO tecnicoDTO) {
