@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.helpdesk.HelpDesk.exception.DataIntegrityValidationException;
-import com.helpdesk.HelpDesk.exception.ObjectNotFounExcepetion;
+import com.helpdesk.HelpDesk.exception.ObjectNotFoundExcepetion;
 import com.helpdesk.HelpDesk.model.Cliente;
 import com.helpdesk.HelpDesk.model.Pessoa;
 import com.helpdesk.HelpDesk.modelDTO.ClienteDTO;
@@ -26,7 +26,7 @@ public class ClienteService {
 	
 	public Cliente findById(Integer id) {
 		Optional<Cliente> cliente = clienteRepository.findById(id);
-		return cliente.orElseThrow(() -> new ObjectNotFounExcepetion("Cliente de id " + id + " não econtrado!"));
+		return cliente.orElseThrow(() -> new ObjectNotFoundExcepetion("Cliente de id " + id + " não econtrado!"));
 	}
 
 	public List<Cliente> findAll() {

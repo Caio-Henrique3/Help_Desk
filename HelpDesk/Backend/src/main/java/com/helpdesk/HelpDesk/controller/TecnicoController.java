@@ -32,7 +32,7 @@ public class TecnicoController {
 	@GetMapping
 	public ResponseEntity<List<TecnicoDTO>> findAll() {
 		List<Tecnico> tecnicos = tecnicoService.findAll();
-		return ResponseEntity.ok(tecnicos.stream().map(x -> new TecnicoDTO(x)).collect(Collectors.toList()));
+		return ResponseEntity.ok(tecnicos.stream().map(tecnico -> new TecnicoDTO(tecnico)).collect(Collectors.toList()));
 	}
 
 	@GetMapping("/{id}")

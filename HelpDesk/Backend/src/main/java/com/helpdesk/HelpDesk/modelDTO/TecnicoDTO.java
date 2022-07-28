@@ -18,16 +18,16 @@ public class TecnicoDTO implements Serializable {
 	
 	protected Integer id;
 	
-	@NotBlank(message = "O campo nome não pode ser nulo ou vazio")
+	@NotBlank(message = "O campo nome é obrigatório")
 	protected String nome;
 	
-	@NotBlank(message = "O campo CPF não pode ser nulo ou vazio")
+	@NotBlank(message = "O campo CPF é obrigatório")
 	protected String cpf;
 	
-	@NotBlank(message = "O campo email não pode ser nulo ou vazio")
+	@NotBlank(message = "O campo email é obrigatório")
 	protected String email;
 	
-	@NotBlank(message = "O campo senha não pode ser nulo ou vazio")
+	@NotBlank(message = "O campo senha é obrigatório")
 	protected String senha;
 	
 	@JsonFormat(pattern = "dd/MM/yyyy")

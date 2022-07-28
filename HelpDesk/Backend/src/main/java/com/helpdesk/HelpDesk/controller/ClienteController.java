@@ -32,7 +32,7 @@ public class ClienteController {
 	@GetMapping
 	public ResponseEntity<List<ClienteDTO>> findAll() {
 		List<Cliente> clientes = clienteService.findAll();
-		return ResponseEntity.ok(clientes.stream().map(x -> new ClienteDTO(x)).collect(Collectors.toList()));
+		return ResponseEntity.ok(clientes.stream().map(cliente -> new ClienteDTO(cliente)).collect(Collectors.toList()));
 	}
 
 	@GetMapping("/{id}")

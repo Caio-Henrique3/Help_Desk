@@ -25,21 +25,21 @@ import lombok.Setter;
 public class Chamado implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataAbertura = LocalDate.now();
-	
+
 	@JsonFormat(pattern = "dd/MM/yyyy")
-	private LocalDate dataFechamento = LocalDate.now();
+	private LocalDate dataFechamento;
 	private String titulo;
 	private String observacoes;
-	private Prioridade priopridade;
+	private Prioridade prioridade;
 	private Status status;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
@@ -47,21 +47,21 @@ public class Chamado implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "tecnico_id")
 	private Tecnico tecnico;
-	
+
 	public Chamado() {
 		super();
 	}
 
-	public Chamado(Integer id, String titulo, String observacoes, Prioridade priopridade, Status status,
-			Cliente cliente, Tecnico tecnico) {
+	public Chamado(Integer id, String titulo, String observacoes, Prioridade prioridade, Status status, Cliente cliente,
+			Tecnico tecnico) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.observacoes = observacoes;
-		this.priopridade = priopridade;
+		this.prioridade = prioridade;
 		this.status = status;
 		this.cliente = cliente;
 		this.tecnico = tecnico;
 	}
-	
+
 }
