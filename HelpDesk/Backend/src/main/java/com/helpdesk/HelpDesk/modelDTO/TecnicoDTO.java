@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.validation.constraints.NotBlank;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.helpdesk.HelpDesk.enums.Perfil;
 import com.helpdesk.HelpDesk.model.Tecnico;
@@ -15,16 +17,26 @@ public class TecnicoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	protected Integer id;
+	
+	@NotBlank(message = "O campo nome não pode ser nulo ou vazio")
 	protected String nome;
+	
+	@NotBlank(message = "O campo CPF não pode ser nulo ou vazio")
 	protected String cpf;
+	
+	@NotBlank(message = "O campo email não pode ser nulo ou vazio")
 	protected String email;
+	
+	@NotBlank(message = "O campo senha não pode ser nulo ou vazio")
 	protected String senha;
+	
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	protected LocalDate dataCriacao = LocalDate.now();
 	protected Set<Integer> perfis = new HashSet<>();
 	
 	public TecnicoDTO() {
 		super();
+		addPerfis(Perfil.CLIENTE);
 	}
 
 	public TecnicoDTO(Tecnico tecnico) {
@@ -36,6 +48,7 @@ public class TecnicoDTO implements Serializable {
 		this.senha = tecnico.getSenha();
 		this.dataCriacao = tecnico.getDataCriacao();
 		this.perfis = tecnico.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
+		addPerfis(Perfil.CLIENTE);
 	}
 
 	public Integer getId() {

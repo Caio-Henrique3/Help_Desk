@@ -2,11 +2,9 @@ package com.helpdesk.HelpDesk.exception;
 
 import java.io.Serializable;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-@AllArgsConstructor
 @Getter
 @Setter
 public class StandardError implements Serializable {
@@ -18,4 +16,18 @@ public class StandardError implements Serializable {
 	private String error;
 	private String message;
 	private String path;
+	
+	public StandardError() {
+		super();
+	}
+
+	public StandardError(Long timestamp, Integer status, String error, String message, String path) {
+		super();
+		this.timestamp = timestamp;
+		this.status = status;
+		this.error = error;
+		this.message = message;
+		this.path = path;
+	}
+	
 }
