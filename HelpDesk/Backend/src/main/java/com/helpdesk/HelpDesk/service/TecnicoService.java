@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.helpdesk.HelpDesk.exception.ObjectNotFounExcepetion;
 import com.helpdesk.HelpDesk.model.Tecnico;
 import com.helpdesk.HelpDesk.repository.TecnicoRepository;
 
@@ -16,7 +17,7 @@ public class TecnicoService {
 	
 	public Tecnico findById(Integer id) {
 		Optional<Tecnico> tecnico = tecnicoRepository.findById(id);
-		return tecnico.orElse(null);
+		return tecnico.orElseThrow(() -> new ObjectNotFounExcepetion("Técnico de id " + id + " não econtrado"));
 	}
 	
 }
