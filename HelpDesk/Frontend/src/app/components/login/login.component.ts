@@ -3,7 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Credenciais } from './../../models/credenciais';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
     this.service.authenticate(this.creds).subscribe(resposta => {
       this.service.successfulLogin(resposta.headers.get('Authorization').substring(7));
       this.router.navigate(['']);
+      this.toastr.success('Login efetuado com sucesso!');
     }, () => {
       this.toastr.error('Usuário e/ou senha inválido!');
     });
