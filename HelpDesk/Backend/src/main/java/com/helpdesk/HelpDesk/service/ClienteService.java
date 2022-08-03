@@ -47,6 +47,10 @@ public class ClienteService {
 		clienteDTO.setId(id);
 		Cliente cliente = findById(id);
 		validarCPFeEmail(clienteDTO);
+		if (!clienteDTO.getSenha().equals(cliente.getSenha())) {
+			clienteDTO.setSenha(encoder.encode(clienteDTO.getSenha()));
+		}
+		
 		cliente = new Cliente(clienteDTO);
 		return clienteRepository.save(cliente);
 	}
