@@ -47,6 +47,10 @@ public class TecnicoService {
 		tecnicoDTO.setId(id);
 		Tecnico tecnico = findById(id);
 		validarCPFeEmail(tecnicoDTO);
+		if (!tecnicoDTO.getSenha().equals(tecnico.getSenha())) {
+			tecnicoDTO.setSenha(encoder.encode(tecnicoDTO.getSenha()));
+		}
+		
 		tecnico = new Tecnico(tecnicoDTO);
 		return tecnicoRepository.save(tecnico);
 	}
