@@ -1,0 +1,41 @@
+<div class="container mat-elevation-z8">
+    <form class="form">
+        <h1 class="fullWidth">Atualizar Técnico</h1>
+        <img class="fullWidth" src="assets/img/tecnico-create.svg" alt="Help Desk">
+
+        <section class="section">
+            <mat-checkbox class="margin" (click)="addPerfil(0)" [checked]="isCheckedAdmin" color="primary">Admin</mat-checkbox>
+            <mat-checkbox class="margin" (click)="addPerfil(1)" [checked]="isCheckedTecnico" color="primary">Técnico</mat-checkbox>
+            <mat-checkbox class="margin" (click)="addPerfil(2)" [checked]="isCheckedCliente" color="primary">Cliente</mat-checkbox>
+        </section>
+
+        <mat-form-field class="fullWidth" appearance="legacy">
+            <mat-label>Nome</mat-label>
+            <input matInput [formControl]="nome" [(ngModel)]="cliente.nome" name="nome" placeholder="Ex...: Fulano de Tal" maxlength="50" required>
+            <mat-icon matSuffix>badge</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth" appearance="legacy">
+            <mat-label>CPF</mat-label>
+            <input matInput [formControl]="cpf" [(ngModel)]="cliente.cpf" name="cpf" mask="000.000.000-00" placeholder="Ex...: 000.000.000-00" required>
+            <mat-icon matSuffix>pin</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth" appearance="legacy">
+            <mat-label>E-mail</mat-label>
+            <input matInput [formControl]="email" [(ngModel)]="cliente.email" name="email" placeholder="Ex...: fulano@mail.com" required>
+            <mat-icon matSuffix>mail</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth" appearance="legacy">
+            <mat-label>Senha</mat-label>
+            <input type="password" [formControl]="senha" [(ngModel)]="cliente.senha" name="senha" matInput placeholder="Ex...: 12345" required>
+            <mat-icon matSuffix>password</mat-icon>
+        </mat-form-field>
+
+        <button class="fullWidth mat-elevation-z4" mat-flat-button color="primary" [disabled]="!validaCampos()" (click)="update()">Atualizar</button>
+        <button class="fullWidth mat-elevation-z4" routerLink="../../" mat-stroked-button>Cancelar</button>
+    </form>
+
+    <p class="fullWidth">&copy; Caio_Henrique</p>
+</div>

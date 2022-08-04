@@ -1,0 +1,41 @@
+<div class="container mat-elevation-z8">
+    <form class="form">
+        <h1 class="fullWidth">Atualizar Técnico</h1>
+        <img class="fullWidth" src="assets/img/tecnico-create.svg" alt="Help Desk">
+
+        <section class="section">
+            <mat-checkbox class="margin" [checked]="isCheckedAdmin" [disabled]="true" color="primary">Admin</mat-checkbox>
+            <mat-checkbox class="margin" [checked]="isCheckedTecnico" [disabled]="true" color="primary">Técnico</mat-checkbox>
+            <mat-checkbox class="margin" [checked]="isCheckedCliente" [disabled]="true" color="primary">Cliente</mat-checkbox>
+        </section>
+
+        <mat-form-field class="fullWidth" appearance="legacy">
+            <mat-label>Nome</mat-label>
+            <input matInput [(ngModel)]="cliente.nome" name="nome" [disabled]="true" placeholder="Ex...: Fulano de Tal" maxlength="50" required>
+            <mat-icon matSuffix>badge</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth" appearance="legacy">
+            <mat-label>CPF</mat-label>
+            <input matInput [(ngModel)]="cliente.cpf" name="cpf" [disabled]="true" mask="000.000.000-00" placeholder="Ex...: 000.000.000-00" required>
+            <mat-icon matSuffix>pin</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth" appearance="legacy">
+            <mat-label>E-mail</mat-label>
+            <input matInput [(ngModel)]="cliente.email" name="email" [disabled]="true" placeholder="Ex...: fulano@mail.com" required>
+            <mat-icon matSuffix>mail</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth" appearance="legacy">
+            <mat-label>Senha</mat-label>
+            <input type="password" [(ngModel)]="cliente.senha" name="senha" [disabled]="true" matInput placeholder="Ex...: 12345" required>
+            <mat-icon matSuffix>password</mat-icon>
+        </mat-form-field>
+
+        <button class="fullWidth mat-elevation-z4" mat-flat-button color="warn" (click)="delete()">Deletar</button>
+        <button class="fullWidth mat-elevation-z4" routerLink="../../" mat-stroked-button>Cancelar</button>
+    </form>
+
+    <p class="fullWidth">&copy; Caio_Henrique</p>
+</div>

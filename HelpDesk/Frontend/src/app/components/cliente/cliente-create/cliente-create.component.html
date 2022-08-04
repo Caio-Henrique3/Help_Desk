@@ -11,25 +11,25 @@
 
         <mat-form-field class="fullWidth" appearance="legacy">
             <mat-label>Nome</mat-label>
-            <input matInput [formControl]="nome" [(ngModel)]="tecnico.nome" name="nome" placeholder="Ex...: Fulano de Tal" maxlength="50" required>
+            <input matInput [formControl]="nome" [(ngModel)]="cliente.nome" name="nome" placeholder="Ex...: Fulano de Tal" maxlength="50" required>
             <mat-icon matSuffix>badge</mat-icon>
         </mat-form-field>
 
         <mat-form-field class="fullWidth" appearance="legacy">
             <mat-label>CPF</mat-label>
-            <input matInput [formControl]="cpf" [(ngModel)]="tecnico.cpf" name="cpf" mask="000.000.000-00" placeholder="Ex...: 000.000.000-00" required>
+            <input matInput [formControl]="cpf" [(ngModel)]="cliente.cpf" name="cpf" mask="000.000.000-00" placeholder="Ex...: 000.000.000-00" required>
             <mat-icon matSuffix>pin</mat-icon>
         </mat-form-field>
 
         <mat-form-field class="fullWidth" appearance="legacy">
             <mat-label>E-mail</mat-label>
-            <input matInput [formControl]="email" [(ngModel)]="tecnico.email" name="email" placeholder="Ex...: fulano@mail.com" required>
+            <input matInput [formControl]="email" [(ngModel)]="cliente.email" name="email" placeholder="Ex...: fulano@mail.com" required>
             <mat-icon matSuffix>mail</mat-icon>
         </mat-form-field>
 
         <mat-form-field class="fullWidth" appearance="legacy">
             <mat-label>Senha</mat-label>
-            <input type="password" [formControl]="senha" [(ngModel)]="tecnico.senha" name="senha" matInput placeholder="Ex...: 12345" required>
+            <input type="password" [formControl]="senha" [(ngModel)]="cliente.senha" name="senha" matInput placeholder="Ex...: 12345" required>
             <mat-icon matSuffix>password</mat-icon>
         </mat-form-field>
 
