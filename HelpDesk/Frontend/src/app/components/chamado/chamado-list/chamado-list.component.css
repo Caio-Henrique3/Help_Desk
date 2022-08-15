@@ -1,0 +1,36 @@
+.container {
+    width: 90%;
+    margin: 1rem auto;
+}
+
+table {
+    width: 100%;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+button {
+    width: 100%;
+}
+
+button:hover {
+    color: white;
+    background-color: rgb(72, 187, 72);
+    transition: background-color 1s;
+}
+
+.edit {
+    color: rgb(0, 153, 255);
+}
+
+.delete {
+    color: rgba(226, 70, 70, 0.884);
+}
+
+.mat-radio-group {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+}
